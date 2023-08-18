@@ -26,10 +26,8 @@ jobs:
 
       - name: Build and Start Server
         run: |
-          npm run build &&
-          npm run start &
-          curl http://localhost:3000 &&
-          echo "Server Started"
+          npm run build
+          npm run start
 
       - name: Run Cypress Tests
         run: npm run cy:run
