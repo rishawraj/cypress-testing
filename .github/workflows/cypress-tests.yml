@@ -24,28 +24,12 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      #   - name: Build
-      #     run: |
-      #      npm run build &&
-      #      npm run start &&
-      #      sleep 5
-
       - name: Build and Start Server
         run: |
           npm run build &&
-          npm start &&
-          echo "Waiting for the server to become responsive..."
-          retries=0
-          maxRetries=10
-          while [ $retries -lt $maxRetries ]; do
-            if curl --silent --fail http://localhost:3000/ >/dev/null; then
-              echo "Server is responsive, proceeding with tests."
-              break
-            fi
-            retries=$((retries+1))
-            echo "Retrying in 10 seconds..."
-            sleep 10
-          done
+          npm run start &
+          curl http://localhost:3000 &&
+          echo "Server Started"
 
       - name: Run Cypress Tests
         run: npm run cy:run
