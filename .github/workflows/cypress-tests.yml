@@ -32,12 +32,12 @@ jobs:
 
       - name: Build and Start Server
         run: |
-          npm run build &
+          npm run build &&
           echo "Waiting for the server to become responsive..."
           retries=0
-          maxRetries=30
+          maxRetries=10
           while [ $retries -lt $maxRetries ]; do
-            if curl --silent --fail http://localhost:your-port/ >/dev/null; then
+            if curl --silent --fail http://localhost:3000/ >/dev/null; then
               echo "Server is responsive, proceeding with tests."
               break
             fi
