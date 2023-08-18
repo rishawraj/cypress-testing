@@ -33,6 +33,7 @@ jobs:
       - name: Build and Start Server
         run: |
           npm run build &&
+          npm start &&
           echo "Waiting for the server to become responsive..."
           retries=0
           maxRetries=10
