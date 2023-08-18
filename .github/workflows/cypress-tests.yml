@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 19 # Choose your desired Node.js version
+          node-version: 14 # Choose your desired Node.js version
 
       - name: Install Dependencies
         run: npm install
@@ -27,7 +27,8 @@ jobs:
       - name: Build and Start Server
         run: |
           npm run build
-          npm run start
+          npm run start &
+        # '&' runs the command in the background, releasing control to the next step immediately
 
       - name: Run Cypress Tests
         run: npm run cy:run
