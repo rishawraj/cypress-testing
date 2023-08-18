@@ -21,5 +21,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ```bash
 npx cypress open
 #or
-npm test
+npm run cy:open
+```
+
+```bash
+#run headlessly
+npx cypress run --browser chrome --headless
+#or
+npm run cy:run
 ```
